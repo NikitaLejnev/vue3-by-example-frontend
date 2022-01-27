@@ -38,5 +38,22 @@
         <InvalidMessage :fieldName="Start date" />
       </div>
     </Field>
+
+    <Field v-slot="{ field, errors }" v-model="endDate" name="endDate">
+      <div class="p-col-12">
+        <label>End Date</label>
+        <div class="p-inputgroup">
+          <Calendar
+            inline
+            placeholder="End Date"
+            :class="{ 'p-invalid': errors.length > 0 }"
+            v-bind="field"
+            v-model="endDate"
+            :minDate="new Date(+startDate + 24 * 3600 * 1000)"
+          />
+        </div>
+        <InvalidMessage :fieldName="End date" />
+      </div>
+    </Field>
   </Form>
 </template>
