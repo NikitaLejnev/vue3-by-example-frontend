@@ -16,3 +16,39 @@
     </template>
   </Card>
 </template>
+
+<script>
+import axios from "axios";
+import { APIURL } from "@/constants";
+import BookingForm from "../components/BookingForm.vue";
+
+export default {
+  name: "Catalog",
+  components: {
+    BookingForm,
+  },
+  data() {
+    return {
+      selectedCatalogId: undefined,
+      displayBookingForm: false,
+      catalog: [],
+    };
+  },
+  methods: {
+    async getCatalog() {
+      const { data } = await axios.get(`${APIURL}/catalog`);
+      this.catalog = data;
+    },
+    book(catalogId) {
+      this.selectedCatalogId = catalogId;
+      this.displayBookingForm = true;
+    },
+    displayMessage() {
+      alert("Booking successful");
+    },
+  },
+  beforeMount() {
+    this.getCatalog();
+  },
+};
+</script>
