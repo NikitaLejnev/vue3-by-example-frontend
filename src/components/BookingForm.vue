@@ -66,6 +66,7 @@
 import { Form, Field } from "vee-validate";
 import * as yup from "yup";
 import axios from "axios";
+import { InvalidMessage } from "./InvalidMessage.vue";
 import { APIURL } from "@/constants";
 
 const schema = yup.object().shape({
@@ -81,4 +82,37 @@ const schema = yup.object().shape({
     ),
 });
 
+export default {
+  name: "BookingForm",
+  components: {
+    Form,
+    Field,
+    InvalidMessage,
+  },
+  props: {
+    selectedCatalogId: Number,
+  },
+  data() {
+    return {
+      name: "",
+      address: "",
+      startDate: undefined,
+      endDate: undefined,
+      schema,
+    };
+  },
+  methods: {
+    async onSubmit(values) {
+      const { name, address, startDate, endDate } = values;
+      await axios.post(`${APIURL}/bookings`, {
+        name,
+        address,
+        startDate,
+        endDate,
+        catalogItemId: this.selectedCatalogId,
+      });
+      this.$emit("booking-form-close");
+    },
+  },
+};
 </script>
