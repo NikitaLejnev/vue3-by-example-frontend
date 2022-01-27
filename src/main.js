@@ -8,7 +8,7 @@ import Toolbar from "primevue/toolbar";
 import Calendar from "primevue/calendar";
 import Dialog from "primevue/dialog";
 import router from "./plugins/vue-router";
-import "primevue/resources/themes/bootstrap4-light-blue";
+import "/node_modules/primeflex/primeflex.css";
 
 const app = createApp(App);
 app.component("InputText", InputText);

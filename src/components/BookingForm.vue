@@ -5,7 +5,7 @@
         <div class="p-inputgroup">
           <InputText placeholder="Name" :class="{ 'p-invalid': errors.length > 0 }" v-bind="field" />
         </div>
-        <InvalidMessage :fieldName="Name" />
+        <InvalidMessage fieldName="Name" />
       </div>
     </Field>
 
@@ -18,7 +18,7 @@
             v-bind="field"
           />
         </div>
-        <InvalidMessage :fieldName="Address" />
+        <InvalidMessage fieldName="Address" />
       </div>
     </Field>
 
@@ -35,7 +35,7 @@
             v-model="startDate"
           />
         </div>
-        <InvalidMessage :fieldName="Start date" />
+        <InvalidMessage fieldName="Start date" />
       </div>
     </Field>
 
@@ -52,7 +52,7 @@
             :minDate="new Date(+startDate + 24 * 3600 * 1000)"
           />
         </div>
-        <InvalidMessage :fieldName="End date" />
+        <InvalidMessage fieldName="End date" />
       </div>
     </Field>
 
@@ -66,7 +66,7 @@
 import { Form, Field } from "vee-validate";
 import * as yup from "yup";
 import axios from "axios";
-import { InvalidMessage } from "./InvalidMessage.vue";
+import InvalidMessage from "./InvalidMessage.vue";
 import { APIURL } from "@/constants";
 
 const schema = yup.object().shape({
