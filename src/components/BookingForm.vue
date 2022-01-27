@@ -9,4 +9,17 @@
       </div>
     </Field>
   </Form>
+
+  <Field v-slot="{ field, errors }" v-model="address" name="address">
+    <div class="p-col-12">
+      <div class="p-inputgroup">
+        <InputText
+          placeholder="Address"
+          :class="{ 'p-invalid': errors.length > 0 }"
+          v-bind="field"
+        />
+      </div>
+      <small class="p-error" v-if="errors.length > 0">Address is invalid</small>
+    </div>
+  </Field>
 </template>
