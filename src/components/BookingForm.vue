@@ -5,7 +5,7 @@
         <div class="p-inputgroup">
           <InputText placeholder="Name" :class="{ 'p-invalid': errors.length > 0 }" v-bind="field" />
         </div>
-        <small class="p-error" v-if="errors.length > 0">Name is invalid</small>
+        <InvalidMessage :fieldName="Name" />
       </div>
     </Field>
 
@@ -18,7 +18,7 @@
             v-bind="field"
           />
         </div>
-        <small class="p-error" v-if="errors.length > 0">Address is invalid</small>
+        <InvalidMessage :fieldName="Address" />
       </div>
     </Field>
   </Form>
