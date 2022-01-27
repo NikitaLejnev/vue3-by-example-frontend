@@ -55,5 +55,9 @@
         <InvalidMessage :fieldName="End date" />
       </div>
     </Field>
+
+    <div class="p-col-12">
+      <Button label="Book" type="submit" />
+    </div>
   </Form>
 </template>
