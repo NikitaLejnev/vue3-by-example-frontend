@@ -61,3 +61,24 @@
     </div>
   </Form>
 </template>
+
+<script>
+import { Form, Field } from "vee-validate";
+import * as yup from "yup";
+import axios from "axios";
+import { APIURL } from "@/constants";
+
+const schema = yup.object().shape({
+  name: yup.string().required(),
+  address: yup.string().required(),
+  startDate: yup.date().required(),
+  endDate: yup
+    .date()
+    .required()
+    .when("startDate",
+      (startDate, schema) => startDate &&
+        schema.min(startDate)
+    ),
+});
+
+</script>
